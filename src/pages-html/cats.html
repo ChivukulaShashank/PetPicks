@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetPicks - Cats</title>
+    <link rel="icon" href="../public/images/logo-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../public/css/shopping.css">
+</head>
+<body>
+    <script src="https://kit.fontawesome.com/7dcdc12078.js" crossorigin="anonymous"></script>
+
+    <!--HEADER BAR-->
+    <!--Logo / Search / User-->
+    <header>
+        <div class="top-menu">
+            <div class="logo-icon">
+                <img src="../public/images/logo.png" alt="logo">
+            </div>
+            <div class="petpicks">
+                <pre>𝑷𝒆𝒕</pre><pre style="color: black;">𝑷𝒊𝒄𝒌𝒔</pre>
+            </div>
+        </div>
+    </header>
+
+    <div class="sub-heading">
+        <h1>Cats</h1>
+    </div>
+
+    <!-- Shopping items section -->
+    <div id="shopping-items">
+        <!-- Shopping items will be dynamically populated here -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchAndDisplayShoppingItems('cat');
+        });
+
+        async function fetchAndDisplayShoppingItems(category) {
+            try {
+                // Fetch shopping items from the server for the specified category
+                const response = await fetch(`/shoppingitems/cat`); // Updated fetch URL
+                const shoppingItems = await response.json();
+
+                // Display the shopping items on the webpage
+                const shoppingItemsSection = document.getElementById('shopping-items');
+                shoppingItemsSection.innerHTML = '';
+
+                // Iterate over the shopping items and create HTML elements to display them
+                shoppingItems.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('shopping-item');
+
+                    // Create elements for item details (name, price, category, description, image)
+                    const nameElement = document.createElement('h3');
+                    nameElement.textContent = item.name;
+
+                    const priceElement = document.createElement('p');
+                    priceElement.textContent = `Price: $${item.price}`;
+
+                    const categoryElement = document.createElement('p');
+                    categoryElement.textContent = `Category: ${item.category}`;
+
+                    const descriptionElement = document.createElement('p');
+                    descriptionElement.textContent = item.description;
+
+                    const imageElement = document.createElement('img');
+                    imageElement.src = item.imageUrl;
+                    imageElement.alt = item.name;
+
+
+                    // Create a button element for renting the item
+                    const rentButton = document.createElement('button');
+                    rentButton.textContent = 'Rent';
+                    rentButton.addEventListener('click', () => rentItem(item._id)); // Pass the item ID to the rentItem function
+
+                    // Append item details to the item element
+                    itemElement.appendChild(nameElement);
+                    itemElement.appendChild(imageElement);
+                    itemElement.appendChild(priceElement);
+                    itemElement.appendChild(categoryElement);
+                    itemElement.appendChild(descriptionElement);
+            
+
+                    // Append the rent button to the item element
+                    itemElement.appendChild(rentButton);
+
+                    // Append the item element to the shopping-items section
+                    shoppingItemsSection.appendChild(itemElement);
+                });
+
+            } catch (error) {
+                console.error('Error fetching and displaying shopping items:', error.message);
+            }
+        }
+
+
+        // Function to handle renting a shopping item
+        function rentItem(itemId) {
+            // Redirect the user to the payment page with the item ID
+            window.location.href = `/payment?itemId=${itemId}`;
+        }
+
+    </script>
+         
+</body>
+</html>

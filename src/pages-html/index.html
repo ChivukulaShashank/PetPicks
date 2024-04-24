@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetPicks</title>
+    <link rel="icon" href="../public/images/logo-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../public/css/style.css">
+
+</head>
+<body>
+    <script src="https://kit.fontawesome.com/7dcdc12078.js" crossorigin="anonymous"></script>
+
+
+    <!--HEADER BAR-->
+    <!--Logo / Search / User-->
+    <header>
+        <div class="top-menu">
+            <div class="logo-icon">
+                <img src="../public/images/logo.png" alt="logo">
+            </div>
+            <div class="petpicks">
+                <pre>𝑷𝒆𝒕</pre><pre style="color: black;">𝑷𝒊𝒄𝒌𝒔</pre>
+            </div>
+            <div class="search">
+                <form action="#">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search" name="search">
+                        <button class="search-btn">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="user">
+                <pre id="user-text">𝗨𝘀𝗲𝗿</pre>
+            </div>
+            <div class="dropdown">  
+                <button class="user-icon-btn">
+                    <i class="fa-solid fa-user"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+
+   
+
+
+    <!--Navigation bar-->
+    <!--Home / Categories / Post / Inbox / Messages-->
+    <div class="nav-container" id="navContainer">
+        <div class="nav-menu">
+            <div class="categories">
+                <i class="fa-solid fa-paw"></i>
+            </div>
+            <div id="upload-btn" class="upload-btn"> <!--nav-semicircle-->
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="log-out">
+                <button>
+                    <i class="fa-solid fa-power-off"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <!--TRENDING PAGE-->
+    <section class="trending-container">
+        <div class="trending-wrapper">
+            <div class="trending-slide">
+                <img id="slide-1" src="../public/images/trending1.png" alt="bg1"/>
+                <img id="slide-2" src="../public/images/trending2.png" alt="bg2"/>
+                <img id="slide-3" src="../public/images/trending3.png" alt="bg3"/>
+                <img id="slide-4" src="../public/images/trending4.png" alt="bg4"/>
+            </div>
+            <div class="trending-nav">
+                <a href="#slide-1"></a>
+                <a href="#slide-2"></a>
+                <a href="#slide-3"></a>
+                <a href="#slide-4"></a>
+            </div>
+            <!-- Navigation buttons -->
+            <img src="../public/images/backBtn.png" id="backSlide" style="size: 1px;">
+            <img src="../public/images/frontBtn.png" id="frontSlide">
+        </div>
+        <div class="trending-pagination"></div>
+    </section>
+
+
+
+
+    
+    <section class="category-container">
+        <div class="category-wrap">
+            <img src="../public/images/backBtn.png" id="backBtn">
+            <div class="category">
+                <div>
+                    <a href="../template/dogs.html"><img src="../public/images/trending2.png" alt="dog"></a>
+                    <a href="../template/cats.html"><img src="../public/images/trending3.png" alt="cat"></a>
+                    <a href="../template/rabbits.html"><img src="../public/images/trending4.png" alt="rabbit"></a>
+                </div>
+                <div>
+                    <a href="../template/birds.html"><img src="../public/images/trending2.png" alt="bird"></a>
+                    <a href="../template/hamsters.html"><img src="../public/images/trending1.png" alt="hamster"></a>
+                    <a href="../template/exotics.html"><img src="../public/images/trending3.png" alt="exotic"></a>
+                </div>
+            </div>
+            <img src="../public/images/frontBtn.png" id="frontBtn">
+        </div>   
+    </section>
+    
+
+    
+
+<div id="upload" class="upload">
+    <form action="/upload-item" method="POST" enctype="multipart/form-data" class="upload-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" min="0" step="0.01" required><br>
+
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+            <option value="">Select a category</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="bird">Bird</option>
+            <option value="rabbit">Rabbit</option>
+            <option value="hamster">Hamster</option>
+            <option value="exotic">Exotic</option> 
+        </select><br>
+    
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" rows="4"></textarea><br>
+
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required><br>
+
+       <button type="submit">Upload</button>
+        
+    </form>
+</div>
+
+
+    <!--FOOTER-->
+    <footer>
+
+    </footer>
+
+
+<script src="../src/script.js"></script>
+</body>
+</html>
